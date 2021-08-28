@@ -21,7 +21,6 @@ public class UserDT implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-
         Set<Role> roles = userModel.getRole();
 
         List<GrantedAuthority> list = new ArrayList<GrantedAuthority>();
@@ -38,7 +37,7 @@ public class UserDT implements UserDetails {
 
     @Override
     public String getUsername() {
-        return userModel.getUsername();
+        return userModel.getEmail();
     }
 
     @Override

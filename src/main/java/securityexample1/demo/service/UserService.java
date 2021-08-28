@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import securityexample1.demo.detail.UserDT;
+import securityexample1.demo.model.Role;
 import securityexample1.demo.model.UserModel;
 import securityexample1.demo.repository.UserRepository;
 
@@ -22,7 +23,12 @@ public class UserService implements UserDetailsService {
     public void save(UserModel userModel) {
 
         userModel.setPassword(passwordEncoder.encode(userModel.getPassword()));
-//        userModel.setRole("ROLE_USER");
+
+        Role role = new Role();
+        role.setRole_id(2l);
+
+        userModel.getRole().add(role);
+
         userRepositroy.save(userModel);
     }
 

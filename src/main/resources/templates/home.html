@@ -9,14 +9,11 @@
 <p th:text="${userInfo.getUsername()}"></p>
 <p th:text="${userInfo.getEmail()}"></p>
 <p th:text="${userInfo.getRole()}"></p>
-<!--<form th:action="@{/logout}" method="post">-->
-<!--    <input type="submit" value="로그아웃">-->
-<!--</form>-->
 <div></div>
 <th:block sec:authorize="isAuthenticated()">
     Logged user: <span sec:authentication="name">Bob</span>
     Logged role: <span sec:authentication="principal.authorities">Bob</span>
-    Logged role: <span sec:authentication="principal.password">Bob</span>
+    Logged password: <span sec:authentication="principal.password">Bob</span>
     <form th:action="@{/logout}" method="post">
         <input type="submit" value="로그아웃">
     </form>

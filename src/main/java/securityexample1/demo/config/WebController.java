@@ -53,7 +53,7 @@ public class WebController {
         if (userDT == null) {
             return "index";
         } else {
-            userModel = userService.findMember(userModel.getEmail());
+            userModel = userService.findMember(userDT.getUsername());
             model.addAttribute("userInfo", userModel);
             return "home";
         }
