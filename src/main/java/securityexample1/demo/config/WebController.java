@@ -67,9 +67,9 @@ public class WebController {
         return "/admin/home";
     }
 
-    @GetMapping("/admin/login")
+    @GetMapping("/admin/home")
     public String adminLoginPage() {
-        return "/admin/login";
+        return "/admin/home";
     }
 
 }

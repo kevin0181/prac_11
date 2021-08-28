@@ -26,7 +26,8 @@ public class WebSecurityConfig {
         protected void configure(HttpSecurity http) throws Exception {
             http
                     .authorizeRequests()
-                    .antMatchers("/**").permitAll()
+                    .antMatchers("/", "/home", "/index", "/login-page", "/signup-page").permitAll()
+                    .antMatchers("/admin/home").access("hasRole('ROLE_ADMIN')")
                     .anyRequest().authenticated()
                     .and()
                     .formLogin()
