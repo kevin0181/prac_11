@@ -24,14 +24,16 @@ public class WebSecurityConfig {
 
         @Override
         protected void configure(HttpSecurity http) throws Exception {
+
+//            http.cors().and().csrf().disable();
+
             http
                     .authorizeRequests()
-                    .antMatchers("/", "/home", "/index", "/login-page", "/signup-page").permitAll()
-                    .antMatchers("/admin/home").access("hasRole('ROLE_ADMIN')")
+                    .antMatchers("/", "/index", "/login-page", "/signup-page").permitAll()
                     .anyRequest().authenticated()
                     .and()
                     .formLogin()
-                    .loginPage("/loginPage")
+                    .loginPage("/login-page")
                     .loginProcessingUrl("/loginUser")
                     .defaultSuccessUrl("/home")
                     .permitAll()
@@ -75,23 +77,51 @@ public class WebSecurityConfig {
 //
 //        @Override
 //        protected void configure(HttpSecurity http) throws Exception {
+//
+////            http.cors().and().csrf().disable();
+//
 //            http
 //                    .authorizeRequests()
-//                    .antMatchers("/admin/login").permitAll()
+//                    .antMatchers("/admin/admin-login").permitAll()
+//                    .antMatchers("/admin/admin-home").access("hasRole('ROLE_ADMIN')")
 //                    .anyRequest().authenticated()
 //                    .and()
 //                    .formLogin()
-//                    .loginPage("/admin/login")
+//                    .loginPage("/admin/admin-login")
 //                    .loginProcessingUrl("/loginAdmin")
-//                    .defaultSuccessUrl("/admin/home")
+//                    .defaultSuccessUrl("/admin/admin-home")
 //                    .permitAll()
 //                    .and()
 //                    .logout()
 //                    .logoutUrl("/adminLogout")
-//                    .logoutSuccessUrl("/admin/home")
+//                    .logoutSuccessUrl("/admin/admin-home")
 //                    .invalidateHttpSession(true)
 //                    .permitAll();
 //        }
+//
+//        @Bean
+//        public UserDetailsService userDetailsService() {
+//            return new UserService();
+//        }
+//
+//        @Bean
+//        public PasswordEncoder passwordEncoder() {
+//            return new BCryptPasswordEncoder();
+//        }
+//
+//        @Bean
+//        public DaoAuthenticationProvider authenticationProvider() {
+//            DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
+//            authenticationProvider.setPasswordEncoder(passwordEncoder());
+//            authenticationProvider.setUserDetailsService(userDetailsService());
+//            return authenticationProvider;
+//        }
+//
+//        @Override
+//        protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//            auth.authenticationProvider(authenticationProvider());
+//        }
+//
 //    }
 
 

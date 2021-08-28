@@ -23,12 +23,12 @@ public class WebController {
         return "index";
     }
 
-    @GetMapping("loginPage")
+    @GetMapping("login-page")
     public String loginPage() {
         return "login-page";
     }
 
-    @GetMapping("signupPage")
+    @GetMapping("signup-page")
     public String signupPage() {
         return "signup-page";
     }
@@ -64,12 +64,12 @@ public class WebController {
     //어드민 로그인
     @PostMapping("loginAdmin")
     public String adminlogin() {
-        return "/admin/home";
+        return "/admin/admin-home";
     }
 
-    @GetMapping("/admin/home")
+    @GetMapping("/admin/admin-login")
     public String adminLoginPage() {
-        return "/admin/home";
+        return "/admin/admin-login";
     }
 
 }
