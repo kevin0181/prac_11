@@ -10,8 +10,6 @@ import securityexample1.demo.detail.UserDT;
 import securityexample1.demo.model.UserModel;
 import securityexample1.demo.service.UserService;
 
-import java.security.Principal;
-
 @Controller
 public class WebController {
 
@@ -20,17 +18,22 @@ public class WebController {
 
     @GetMapping("/")
     public String index() {
-        return "index";
+        return "/user/index";
     }
 
-    @GetMapping("login-page")
+    @GetMapping("/user/index")
+    public String index2() {
+        return "/user/index";
+    }
+
+    @GetMapping("/user/login-page")
     public String loginPage() {
-        return "login-page";
+        return "/user/login-page";
     }
 
-    @GetMapping("signup-page")
+    @GetMapping("/user/signup-page")
     public String signupPage() {
-        return "signup-page";
+        return "user/signup-page";
     }
 
     //회원가입
@@ -39,31 +42,24 @@ public class WebController {
 
         userService.save(userModel);
 
-        return "/index";
+        return "/user/index";
     }
 
-    //로그인
-    @PostMapping("loginUser")
-    public String loginUser() {
-        return "home";
-    }
-
-    @GetMapping("/home")
+    @GetMapping("/user/home")
     public String home(@AuthenticationPrincipal UserDT userDT, UserModel userModel, Model model) {
         if (userDT == null) {
-            return "index";
+            return "/user/index";
         } else {
             userModel = userService.findMember(userDT.getUsername());
             model.addAttribute("userInfo", userModel);
-            return "home";
+            return "/user/home";
         }
 //        return "home";
     }
 
 
-    //어드민 로그인
-    @PostMapping("loginAdmin")
-    public String adminlogin() {
+    @GetMapping("/admin/admin-home")
+    public String adminHome() {
         return "/admin/admin-home";
     }
 
